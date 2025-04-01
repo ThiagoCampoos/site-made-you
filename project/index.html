@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Week 2024</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen bg-white">
+        <!-- Banner Section -->
+        <div id="banner" class="banner">
+            <div class="carousel">
+                <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80')"></div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80')"></div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1537832816519-689ad163238b?auto=format&fit=crop&q=80')"></div>
+                <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1581338834647-b0fb40704e21?auto=format&fit=crop&q=80')"></div>
+            </div>
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <div class="icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="crown-icon">
+                        <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+                    </svg>
+                </div>
+                <h1 id="banner-title">Fashion Week 2024</h1>
+                <p class="banner-subtitle">Onde a moda encontra o futuro</p>
+                <button onclick="scrollToDescription()" class="learn-more-btn">
+                    Saiba Mais
+                </button>
+            </div>
+            <div class="carousel-dots"></div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div id="gallery" class="gallery">
+            <div class="gallery-content">
+                <h2>Vote no seu candidato(a)</h2>
+                <div class="participants-carousel">
+                    <button class="nav-button prev-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="participants-container" id="participants-container">
+                        <!-- Participants will be added dynamically via JavaScript -->
+                    </div>
+
+                    <button class="nav-button next-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div id="description" class="description">
+            <div class="description-content">
+                <h2>Sobre o Evento</h2>
+                
+                <div class="event-info">
+                    <div class="event-video">
+                        <video controls width="100%">
+                            <source src="galeria/N Soluções Desenvolvimento de Sistemas.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <div class="event-details">
+                        <div class="info-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <h3>Data</h3>
+                            <p>15-20 Junho 2024</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <h3>Local</h3>
+                            <p>Centro de Convenções</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <h3>Participantes</h3>
+                            <p>50+ Designers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fashion-container">
+        <!-- Cabeçalho -->
+        <div class="fashion-header">
+            <h2>Desfile de Moda</h2>
+        </div>
+      
+        <!-- Grid de notícias/eventos -->
+        <div class="fashion-grid">
+            <!-- Card 1 -->
+            <div class="fashion-card">
+                <img src="galeria/back-view-high-fashion-model-runway-audience-capturing-moment.jpg" alt="Imagem 1" />
+                <div class="card-content">
+                    <h3>Alta Costura</h3>
+                    <p>Peças exclusivas dos maiores estilistas do mundo.</p>
+                    <div class="event-date">15 MAI</div>
+                </div>
+            </div>
+      
+            <!-- Card 2 -->
+            <div class="fashion-card">
+                <img src="galeria/digital-art-inmersive-exhibition.jpg" alt="Imagem 2" />
+                <div class="card-content">
+                    <h3>Moda Sustentável</h3>
+                    <p>Looks ecológicos e tendências sustentáveis.</p>
+                    <div class="event-date">22 JUN</div>
+                </div>
+            </div>
+      
+            <!-- Card 3 -->
+            <div class="fashion-card">
+                <img src="galeria/fashion-models-walking-illuminated-performance-space-generated-by-ai.jpg" alt="Imagem 3" />
+                <div class="card-content">
+                    <h3>Estilo Urbano</h3>
+                    <p>O melhor da moda casual e streetwear.</p>
+                    <div class="event-date">10 JUL</div>
+                </div>
+            </div>
+      
+            <!-- Card 4 -->
+            <div class="fashion-card">
+                <img src="galeria/model-walking-down-runway-fashion-photography.jpg" alt="Imagem 4" />
+                <div class="card-content">
+                    <h3>Tendências Futuristas</h3>
+                    <p>O que esperar da moda nos próximos anos.</p>
+                    <div class="event-date">05 AGO</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
