@@ -195,3 +195,124 @@ gsap.from('.participant-card', {
     stagger: 0.1,
     ease: "power2.out"
 });
+
+//js alta costura
+// alta-costura.js - Versão otimizada
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Verifica se GSAP está carregado
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        console.log('GSAP e ScrollTrigger carregados com sucesso!');
+    } else {
+        console.error('GSAP não está carregado. Verifique os links no HTML.');
+    }
+
+    // Dados dos designers
+    const designers = [
+        {
+            name: "Carlos Miele",
+            image: "https://via.placeholder.com/400x320",
+            collection: "Brasilidade Contemporânea",
+            bio: "Conhecido por misturar técnicas artesanais brasileiras com alta costura internacional."
+        },
+        {
+            name: "Donatella Versace",
+            image: "https://via.placeholder.com/400x320",
+            collection: "Neon Renaissance",
+            bio: "A força criativa por trás da Versace, trazendo seu estilo ousado para a alta costura."
+        },
+        {
+            name: "Oskar Metsavaht",
+            image: "https://via.placeholder.com/400x320",
+            collection: "Sustainable Luxury",
+            bio: "Pioneiro em moda sustentável de luxo, combinando ética ambiental com alta costura."
+        }
+    ];
+
+    // Função para criar cards de designers
+    function createDesignerCards() {
+        const grid = document.querySelector('.ac-participants-grid');
+        
+        if (!grid) {
+            console.error('Elemento .ac-participants-grid não encontrado');
+            return;
+        }
+
+        grid.innerHTML = ''; // Limpa o conteúdo existente
+
+        designers.forEach(designer => {
+            const card = document.createElement('div');
+            card.className = 'ac-participant-card';
+            card.innerHTML = `
+                <img src="${designer.image}" alt="${designer.name}" class="ac-participant-image">
+                <div class="ac-participant-info">
+                    <h3 class="ac-participant-name">${designer.name}</h3>
+                    <p class="ac-participant-collection">"${designer.collection}"</p>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Botão Voltar
+    const backBtn = document.querySelector('.ac-back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            window.history.back();
+        });
+    }
+
+    // Inicializa animações
+    function initAnimations() {
+        if (typeof gsap !== 'undefined') {
+            gsap.from('.ac-event-header', {
+                opacity: 0,
+                y: -50,
+                duration: 1,
+                ease: "power2.out"
+            });
+
+            gsap.from('.ac-main-content', {
+                scrollTrigger: {
+                    trigger: '.ac-main-content',
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+
+            gsap.from('.ac-participant-card', {
+                scrollTrigger: {
+                    trigger: '.ac-participants-section',
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.6,
+                stagger: 0.15,
+                ease: "power2.out"
+            });
+
+            gsap.from('.ac-gallery-item', {
+                scrollTrigger: {
+                    trigger: '.ac-gallery-section',
+                    start: 'top 80%'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: "power2.out"
+            });
+        }
+    }
+
+    // Inicializa tudo
+    createDesignerCards();
+    initAnimations();
+
+    console.log('Script alta-costura.js carregado com sucesso!');
+});
